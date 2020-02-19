@@ -62,7 +62,9 @@ openExpress(config)
 ```yaml
 openapi: 3.0.0
 info:
-  $ref: ./info.yaml
+  description: Something about the API
+  version: 1.0.0
+  title: Example API
 
 servers:
   - url: /api/v1
