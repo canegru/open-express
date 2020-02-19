@@ -1,34 +1,73 @@
+
 <h1 align="center">Welcome to open-express 👋</h1>
+
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.1-blue.svg?cacheSeconds=2592000" />
-  <a href="#" target="_blank">
-    <img alt="License: ISC" src="https://img.shields.io/badge/License-ISC-yellow.svg" />
-  </a>
+
+<img alt="Version" src="https://img.shields.io/badge/version-0.1-blue.svg?cacheSeconds=2592000"  />
+
+<a href="#" target="_blank">
+
+<img alt="License: ISC" src="https://img.shields.io/badge/License-ISC-yellow.svg"  />
+
+</a>
+
 </p>
+
+  
 
 > Quickly spin up express APIs using OpenAPI 3.0 or Swagger 2.0 definitions.
 
-This module uses `express,express-openapi-validator and swagger-routes-express`.
+  
+
+This module uses `express, express-openapi-validator and swagger-routes-express`.
+
+  
 
 ## Install
-
-```sh
-npm install
+```bash
+$ npm install open-express
 ```
 
-## Run tests
+## Example
+```js
+const openExpress = require('open-express');
 
-```sh
-npm run test
+// Define all your operations here
+const api = {
+  alive: async (req, res) => {
+    res.json({
+      status: 'alive',
+    });
+  },
+};
+
+// Define all configs
+const config = {
+  routerPath: path.join(__dirname, './router.yaml'),
+  operations: api,
+};
+
+// Call open-express with config
+openExpress(config)
+  .then((app) => {
+    app.listen(3000);
+    console.log('App running on port 3000');
+  });
+ 
 ```
 
-## Author
+## Usage
 
-👤 **Catalin  Negru  **
-
-* Website: cnegru.com
-* Github: [@canegru  ](https://github.com/canegru  )
+`config`:
+* `routerPath (string) *` Path to your OpenAPI 3.0 or OpenAPI 2.0 .yaml file
+* `operations (object) *` All your endpoint operations
+* `errorHandler (func) -` Custom error handler
+* `apiOptions (object) -`
+	 * `security (object) -` All your endpoint operations
+	 * `middleware (object) -` Any custom middleware
 
 ## Show your support
+
+  
 
 Give a ⭐️ if this project helped you!

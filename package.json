@@ -1,7 +1,7 @@
 {
   "name": "open-express",
-  "version": "0.1.3",
-  "description": "",
+  "version": "0.2",
+  "description": "open-express: Quickly spin up express APIs using OpenAPI 3.0 or Swagger 2.0 definitions",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
