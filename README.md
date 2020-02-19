@@ -29,6 +29,7 @@ $ npm install open-express
 ```
 
 ## Example
+**example.js**
 ```js
 const openExpress = require('open-express');
 
@@ -54,6 +55,65 @@ openExpress(config)
     console.log('App running on port 3000');
   });
  
+```
+
+
+**router.yaml**
+```yaml
+openapi: 3.0.0
+info:
+  $ref: ./info.yaml
+
+servers:
+  - url: /api/v1
+
+paths:
+  /alive:
+    get:
+      tags:
+        - alive
+      summary: Get API Status
+      description: Get API Status
+      operationId: alive
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerInfo"
+
+  /alive:
+    get:
+      tags:
+        - alive
+      summary: Get API Status
+      description: Get API Status
+      operationId: alive
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerInfo"
+
+components:
+  schemas:
+    ServerInfo:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        version:
+          type: string
+        uptime:
+          type: number
+          
 ```
 
 ## Usage
