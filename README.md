@@ -8,6 +8,8 @@
 
 > Quickly spin up express APIs using OpenAPI 3.0 or Swagger 2.0 definitions.
 
+This module uses `express,express-openapi-validator and swagger-routes-express`.
+
 ## Install
 
 ```sh

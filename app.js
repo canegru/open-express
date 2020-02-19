@@ -6,6 +6,7 @@ const { isPlainObject, get } = require('lodash');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { OpenApiValidator } = require('express-openapi-validator');
+const jsonRefs = require('json-refs');
 
 const defaultErrorHandler = async (err, req, res, next) => {
   const status = get(err, 'status', 500);
@@ -27,7 +28,6 @@ const openExpress = async (options) => {
       apiOptions,
       errorHandler = defaultErrorHandler,
     } = options;
-    console.log("TCL: openExpress -> errorHandler", errorHandler)
 
     // Validate basic options
     if (!path.isAbsolute(routerPath)) throw new Error('Path must be valid and an absolute path');
@@ -38,7 +38,17 @@ const openExpress = async (options) => {
     // Init OpenAPI 3.0
     const apiDefinition = await YAML.load(routerPath);
 
-    const connect = connector(operations, apiDefinition, apiOptions);
+    // Check for code splitting in file
+    const refOptions = {
+      loaderOptions: {
+        processContent: async (content, callback) => callback(await YAML.load(content.location)),
+      },
+      location: routerPath,
+    };
+
+    const apiDefinitionParsed = await jsonRefs.resolveRefs(apiDefinition, refOptions);
+
+    const connect = connector(operations, apiDefinitionParsed.resolved, apiOptions);
     app = express();
 
     // Middleware
