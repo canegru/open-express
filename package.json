@@ -1,6 +1,6 @@
 {
   "name": "open-express",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "open-express: Quickly spin up express APIs using OpenAPI 3.0 or Swagger 2.0 definitions",
   "main": "app.js",
   "scripts": {
