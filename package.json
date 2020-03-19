@@ -1,6 +1,6 @@
 {
   "name": "open-express",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "open-express: Quickly spin up express APIs using OpenAPI 3.0 or Swagger 2.0 definitions",
   "main": "app.js",
   "scripts": {
@@ -16,15 +16,15 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "express-openapi-validator": "^3.7.2",
-    "json-refs": "^3.0.13",
+    "express-openapi-validator": "^3.10.0",
+    "json-refs": "^3.0.15",
     "lodash": "^4.17.15",
     "swagger-routes-express": "^3.1.2",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.1"
   }
 }
